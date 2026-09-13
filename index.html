@@ -2762,7 +2762,261 @@ input, select, textarea, button {
   word-break: break-word !important;
 }
 
+
+/* ===== PianoForte – elegante Animationen ===== */
+
+/* 2. Hero entrance */
+@keyframes pfHeroUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pfHeroImage {
+  from { opacity: 0; transform: scale(1.035); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.hero h1 { animation: pfHeroUp .8s cubic-bezier(.22,1,.36,1) both; }
+.hero p  { animation: pfHeroUp .8s .12s cubic-bezier(.22,1,.36,1) both; }
+.hero .hero-actions { animation: pfHeroUp .8s .22s cubic-bezier(.22,1,.36,1) both; }
+.hero-image, .hero-card { animation: pfHeroImage 1s .08s cubic-bezier(.22,1,.36,1) both; }
+
+/* 3. Scroll reveal */
+.pf-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.pf-reveal.pf-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 4. Buttons */
+a.btn, button, .btn {
+  transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease;
+}
+a.btn:hover, button:hover, .btn:hover {
+  transform: translateY(-2px);
+}
+a.btn:active, button:active, .btn:active {
+  transform: translateY(0);
+}
+
+/* 6. Subtle musical glow */
+.hero, .hero-section {
+  position: relative;
+  isolation: isolate;
+}
+.hero::after, .hero-section::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -120px;
+  top: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(154,112,72,.10) 0%, rgba(154,112,72,0) 68%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: -1;
+  animation: pfGlow 9s ease-in-out infinite alternate;
+}
+@keyframes pfGlow {
+  from { transform: translate3d(0,0,0) scale(.94); opacity: .55; }
+  to   { transform: translate3d(-35px,18px,0) scale(1.08); opacity: .9; }
+}
+
+/* 7. FAQ */
+.faq-item, .accordion-item {
+  overflow: hidden;
+}
+.faq-question, .accordion-header {
+  transition: background-color .2s ease;
+}
+.faq-answer, .accordion-content {
+  transition: max-height .38s ease, opacity .28s ease, padding .28s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 </style>
+
+<style>
+/* ===== Final responsive layout fix ===== */
+
+/* Never allow the document to become wider than the viewport */
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+img, video, iframe, svg {
+  max-width: 100%;
+}
+iframe {
+  width: 100%;
+}
+
+/* Prevent common fixed/absolute elements from creating horizontal overflow */
+.site-header,
+main,
+section,
+.container,
+.hero,
+.hero-section,
+.hero-grid,
+.hero-content,
+.hero-image,
+.hero-card,
+.cards,
+.card-grid,
+.contact-grid,
+.footer {
+  max-width: 100%;
+}
+
+/* Larger devices: text/content and image side-by-side, image at the top/right */
+@media (min-width: 851px) {
+  .hero,
+  .hero-section {
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr) !important;
+    align-items: center !important;
+    gap: clamp(32px, 5vw, 80px) !important;
+  }
+
+  .hero-content {
+    min-width: 0 !important;
+  }
+
+  .hero-image,
+  .hero-card {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* Smaller devices: image underneath the text/content */
+@media (max-width: 850px) {
+  .hero,
+  .hero-section {
+    overflow: hidden !important;
+  }
+
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 28px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-content {
+    order: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .hero-image,
+  .hero-card {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .hero-image img,
+  .hero-card img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: cover;
+  }
+
+  /* Remove any intentional desktop offsets on small screens */
+  .hero-card,
+  .hero-image {
+    right: auto !important;
+    left: auto !important;
+    transform: none;
+  }
+
+  .hero h1,
+  .hero p,
+  .hero-actions {
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+  }
+
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Phones: tighter, guaranteed viewport fit */
+@media (max-width: 650px) {
+  body {
+    min-width: 0 !important;
+  }
+
+  .container,
+  .hero-grid,
+  .hero-content,
+  .hero-image,
+  .hero-card {
+    width: 100% !important;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap !important;
+  }
+
+  .hero-actions .btn,
+  .btn {
+    max-width: 100% !important;
+  }
+}
+
+/* Map: keep the actual address visible and prevent horizontal overflow */
+.map-wrap,
+.map-container,
+.map,
+.location-map {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+.map-wrap iframe,
+.map-container iframe,
+.map iframe,
+.location-map iframe {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  border: 0;
+}
+</style>
+
 </head>
 
 <body>
@@ -2801,7 +3055,7 @@ input, select, textarea, button {
 
   <main>
 
-    <section class="hero" id="start">
+    <section class="hero pf-reveal" id="start">
       <div class="container hero-grid">
 
         <div>
@@ -2840,7 +3094,7 @@ input, select, textarea, button {
             alt="PianoForte Schule für Klavier"
           />
 
-          <div class="hero-card">
+          <div class="hero-card pf-reveal">
             <strong>Musik beginnt mit Verständnis.</strong>
 
             <p>
@@ -2853,7 +3107,7 @@ input, select, textarea, button {
       </div>
     </section>
 
-    <section id="ueber-uns" class="soft-section">
+    <section id="ueber-uns" class="soft-section pf-reveal">
       <div class="container about-grid">
 
         <div>
@@ -2919,7 +3173,7 @@ input, select, textarea, button {
 
         <div class="education-grid">
 
-          <div class="education-card">
+          <div class="education-card pf-reveal">
             <h3>USA</h3>
 
             <ul>
@@ -2940,7 +3194,7 @@ input, select, textarea, button {
             </ul>
           </div>
 
-          <div class="education-card">
+          <div class="education-card pf-reveal">
             <h3>Deutschland</h3>
 
             <ul>
@@ -2961,7 +3215,7 @@ input, select, textarea, button {
       </div>
     </section>
 
-    <section id="unterricht" class="soft-section">
+    <section id="unterricht" class="soft-section pf-reveal">
       <div class="container">
 
         <div class="section-heading">
@@ -3017,7 +3271,7 @@ input, select, textarea, button {
       </div>
     </section>
 
-    <section class="image-section">
+    <section class="image-section pf-reveal">
       <div class="container">
 
         <img
@@ -3042,8 +3296,8 @@ input, select, textarea, button {
 
         <div class="cards-grid">
 
-          <div class="card">
-            <div class="card-number">01</div>
+          <div class="card pf-reveal">
+            <div class="card-number pf-reveal">01</div>
 
             <h3>Gehörbildung</h3>
 
@@ -3053,8 +3307,8 @@ input, select, textarea, button {
             </p>
           </div>
 
-          <div class="card">
-            <div class="card-number">02</div>
+          <div class="card pf-reveal">
+            <div class="card-number pf-reveal">02</div>
 
             <h3>Harmonielehre</h3>
 
@@ -3064,8 +3318,8 @@ input, select, textarea, button {
             </p>
           </div>
 
-          <div class="card">
-            <div class="card-number">03</div>
+          <div class="card pf-reveal">
+            <div class="card-number pf-reveal">03</div>
 
             <h3>Prüfungsvorbereitung</h3>
 
@@ -3080,7 +3334,7 @@ input, select, textarea, button {
       </div>
     </section>
 
-    <section id="preise" class="soft-section">
+    <section id="preise" class="soft-section pf-reveal">
       <div class="container">
 
         <div class="section-heading">
@@ -3093,7 +3347,7 @@ input, select, textarea, button {
 
         <div class="pricing-grid">
 
-          <div class="price-card">
+          <div class="price-card pf-reveal">
             <h3>45 Minuten</h3>
 
             <div class="price">
@@ -3112,7 +3366,7 @@ input, select, textarea, button {
             </ul>
           </div>
 
-          <div class="price-card featured">
+          <div class="price-card featured pf-reveal">
             <h3>30 Minuten</h3>
 
             <div class="price">
@@ -3133,7 +3387,7 @@ input, select, textarea, button {
 
         </div>
 
-        <div class="card" style="margin-top: 24px;">
+        <div class="card pf-reveal" style="margin-top: 24px;">
           <h3>Weitere Konditionen</h3>
 
           <p>
@@ -3187,7 +3441,7 @@ input, select, textarea, button {
       </div>
     </section>
 
-    <section id="anmeldung" class="soft-section">
+    <section id="anmeldung" class="soft-section pf-reveal">
       <div class="container">
 
         <div class="section-heading">
@@ -3289,7 +3543,7 @@ input, select, textarea, button {
       </div>
     </section>
 
-    <section id="standort" class="soft-section">
+    <section id="standort" class="soft-section pf-reveal">
       <div class="container">
 
         <div class="section-heading">
@@ -3307,7 +3561,7 @@ input, select, textarea, button {
 
         <div class="location-grid">
 
-          <div class="location-card">
+          <div class="location-card pf-reveal">
 
             <div class="location-icon">⌖</div>
 
@@ -3355,7 +3609,7 @@ input, select, textarea, button {
           <iframe
             class="map-frame"
             title="Google Maps – PianoForte Schule für Klavier in Valley"
-            src="https://www.google.com/maps?q=Graf-Arco-Stra%C3%9Fe%207%2C%2083626%20Valley&output=embed"
+            src="https://www.google.com/maps?q=Graf-Arco-Stra%C3%9Fe%207%2C%2083626%20Valley%2C%20Deutschland&output=embed&z=17"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
@@ -3749,6 +4003,50 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+</script>
+
+
+<script>
+(function () {
+  const reveals = document.querySelectorAll('.pf-reveal');
+  if ('IntersectionObserver' in window && reveals.length) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('pf-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('pf-visible'));
+  }
+
+  // Smooth FAQ height animation for native details/summary accordions.
+  document.querySelectorAll('details').forEach(details => {
+    const content = Array.from(details.children).find(el =>
+      el.tagName && el.tagName.toLowerCase() !== 'summary'
+    );
+    if (!content) return;
+
+    details.addEventListener('toggle', () => {
+      if (!details.open) {
+        content.style.maxHeight = '';
+        content.style.opacity = '';
+        return;
+      }
+      content.style.overflow = 'hidden';
+      content.style.maxHeight = '0px';
+      content.style.opacity = '0';
+      requestAnimationFrame(() => {
+        content.style.transition = 'max-height .38s ease, opacity .28s ease';
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.opacity = '1';
+      });
+    });
+  });
+})();
 </script>
 
 </body>

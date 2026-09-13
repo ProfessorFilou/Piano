@@ -2571,6 +2571,197 @@ a[href^="#"] {
   }
 }
 
+
+/* =========================================================
+   HARD OVERFLOW FIX
+   Nothing may stick out on the right side.
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+body {
+  position: relative;
+}
+
+main, header, footer, section, .container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0 !important;
+  overflow-x: clip;
+}
+
+/* Keep the actual content container centered and inside viewport */
+.container {
+  width: min(1180px, calc(100% - 40px)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* The hero floating card was the main intentional right overflow.
+   It is now always contained inside the image/content area. */
+.hero-image-wrap {
+  position: relative;
+  width: 100% !important;
+  max-width: 620px !important;
+  min-width: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: visible;
+}
+
+.hero-card {
+  position: absolute;
+  right: 18px !important;
+  left: auto !important;
+  max-width: calc(100% - 36px) !important;
+  width: min(285px, calc(100% - 36px)) !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere;
+}
+
+/* Never let text, links or long email/phone strings create width */
+h1, h2, h3, h4, p, li, a, span, strong, label {
+  min-width: 0 !important;
+  max-width: 100%;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* All media stay inside their parent */
+img, picture, video, iframe, svg, canvas {
+  display: block;
+  max-width: 100% !important;
+  width: auto;
+}
+
+img {
+  height: auto;
+}
+
+/* Inputs/forms cannot push page sideways */
+input, select, textarea, button {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Strict one-column content */
+.hero,
+.hero-grid,
+.about-grid,
+.location-grid,
+.contact-grid,
+.trial-box,
+.cards,
+.education-grid,
+.pricing-grid,
+.form-row {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+.hero > *, .hero-grid > *,
+.about-grid > *, .location-grid > *,
+.contact-grid > *, .trial-box > *,
+.cards > *, .education-grid > *,
+.pricing-grid > * {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Mobile: card goes under the image, never outside the screen */
+@media (max-width: 650px) {
+  .container {
+    width: calc(100% - 24px) !important;
+  }
+
+  .hero-image-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-card {
+    position: relative !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: calc(100% - 16px) !important;
+    max-width: calc(100% - 16px) !important;
+    margin: -26px auto 0 !important;
+  }
+
+  .hero-image {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .site-header .container {
+    width: calc(100% - 24px) !important;
+    overflow: visible;
+  }
+}
+
+/* Short phone: sidebar itself scrolls, page never gets clipped */
+@media (max-height: 620px) {
+  .site-header .nav-links {
+    height: 100dvh !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+  }
+}
+
+
+/* =========================================================
+   SIDEBAR FIX – darf unten über den Viewport hinauslaufen
+   ========================================================= */
+
+.site-header .nav-links {
+  top: 0 !important;
+  bottom: auto !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  padding-bottom: 80px !important;
+}
+
+/* Sidebar bleibt links verankert und kann beliebig lang werden */
+.site-header .nav-links.mobile-open {
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* Auf kurzen Geräten bewusst über den unteren Bildschirmrand hinaus */
+@media (max-height: 700px) {
+  .site-header .nav-links {
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    height: max-content !important;
+    padding-bottom: 100px !important;
+  }
+}
+
+/* Menütext darf niemals seitlich hinausragen */
+.site-header .nav-links a {
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
 </style>
 </head>
 
@@ -3385,7 +3576,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Menü öffnen');
     nav.classList.remove('mobile-open');
-    document.body.classList.remove('menu-open');
+    
   }
 
   toggle.addEventListener('click', function () {
@@ -3420,7 +3611,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Menü öffnen');
     nav.classList.remove('mobile-open');
-    document.body.classList.remove('menu-open');
+    
   }
 
   document.addEventListener('keydown', function (event) {
@@ -3454,7 +3645,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Menü öffnen');
     nav.classList.remove('mobile-open');
-    document.body.classList.remove('menu-open');
+    
   }
 
   toggle.addEventListener('click', function (event) {
@@ -3505,7 +3696,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.setAttribute('aria-label', 'Menü schließen');
     nav.classList.add('mobile-open');
     overlay.classList.add('is-visible');
-    document.body.classList.add('menu-open');
+    
   }
 
   function closeMenu() {
@@ -3514,7 +3705,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.setAttribute('aria-label', 'Menü öffnen');
     nav.classList.remove('mobile-open');
     overlay.classList.remove('is-visible');
-    document.body.classList.remove('menu-open');
+    
   }
 
   toggle.addEventListener('click', function (e) {

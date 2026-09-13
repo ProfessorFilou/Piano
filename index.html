@@ -2844,6 +2844,67 @@ a.btn:active, button:active, .btn:active {
   }
 }
 
+
+/* === Final spacing, scaling & stable hover === */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip !important;
+}
+body { margin: 0; }
+.container, .hero-grid, section, .site-header-inner, .footer-inner, main {
+  width: min(100% - 40px, 1180px);
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.container { padding-left: 0 !important; padding-right: 0 !important; }
+.site-header-inner {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.site-header .logo, .site-header .brand, .site-header a:first-child {
+  flex: 0 0 auto;
+}
+.hero-grid { gap: clamp(32px, 5vw, 72px); }
+.hero-content { min-width: 0; }
+.hero-image, .hero-card { min-width: 0; max-width: 100%; }
+img, iframe, video, svg { max-width: 100%; }
+
+/* Never move the navigation because of hover */
+.site-header .nav-links,
+.site-header .nav-links:hover {
+  transform: none !important;
+  top: 0 !important;
+}
+.site-header .nav-links a,
+.site-header .nav-links a:hover,
+.site-header .nav-links li,
+.site-header .nav-links li:hover {
+  transform: none !important;
+}
+.site-header .nav-links a:hover {
+  background: rgba(0,0,0,.04);
+}
+
+@media (min-width: 1200px) {
+  .container, .hero-grid, section, .site-header-inner, .footer-inner, main {
+    width: min(100% - 64px, 1180px);
+  }
+}
+@media (max-width: 850px) {
+  .container, .hero-grid, section, .site-header-inner, .footer-inner, main {
+    width: calc(100% - 32px);
+  }
+}
+@media (max-width: 520px) {
+  .container, .hero-grid, section, .site-header-inner, .footer-inner, main {
+    width: calc(100% - 24px);
+  }
+  .site-header-inner { min-height: 66px; gap: 14px; }
+}
 </style>
 
 <style>
@@ -3017,6 +3078,150 @@ section,
 }
 </style>
 
+<style>
+/* === PianoForte Header: balanced spacing + logo/text swap === */
+@media (min-width: 851px) {
+  .site-header .header-inner,
+  .site-header .container,
+  header .header-inner,
+  header .container {
+    width: min(100% - 56px, 1320px) !important;
+    max-width: 1320px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Brand group: text on the left, logo on the right */
+  .site-header .brand,
+  .site-header .logo,
+  header .brand,
+  header .logo {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .site-header .brand,
+  header .brand {
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+  }
+
+  .site-header .brand-text,
+  header .brand-text {
+    order: 1 !important;
+    text-align: left !important;
+  }
+
+  .site-header .brand-logo,
+  .site-header .logo img,
+  header .brand-logo,
+  header .logo img {
+    order: 2 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Keep the PianoForte name itself further left */
+  .site-header .brand-name,
+  .site-header .site-title,
+  header .brand-name,
+  header .site-title {
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .site-header .header-inner,
+  .site-header .container,
+  header .header-inner,
+  header .container {
+    width: calc(100% - 32px) !important;
+    max-width: none !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+
+  .site-header .brand,
+  header .brand {
+    gap: 10px !important;
+  }
+}
+
+/* Never let header hover alter layout/vertical position */
+.site-header .nav-links a,
+header .nav-links a {
+  transform: none !important;
+  position: relative !important;
+  top: 0 !important;
+  bottom: auto !important;
+}
+
+.site-header .nav-links a:hover,
+.site-header .nav-links a:focus-visible,
+header .nav-links a:hover,
+header .nav-links a:focus-visible {
+  transform: none !important;
+  top: 0 !important;
+  bottom: auto !important;
+}
+</style>
+<style>
+/* === PianoForte image layout === */
+.pf-piano-image,
+.pf-grand-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.pf-image-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pf-image-link:hover img {
+  transform: scale(1.015);
+}
+
+.pf-image-link img {
+  transition: transform .35s ease;
+}
+
+/* Second image: integrated into text instead of a standalone block */
+.pf-text-image {
+  width: min(42%, 420px) !important;
+  max-width: 42% !important;
+  float: right;
+  margin: 0 0 22px 30px !important;
+  border-radius: 16px;
+}
+
+.pf-text-image-wrap::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 850px) {
+  .pf-text-image {
+    float: none;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 18px 0 24px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .pf-piano-image,
+  .pf-grand-image {
+    border-radius: 14px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -3089,7 +3294,7 @@ section,
 
         <div class="hero-image-wrap">
           <img
-            class="hero-image"
+            class="hero-image pf-piano-image"
             src="http://www.pianoforte-valley.de/attachments/Image/264459_245877705427111_2069370_n_2.jpg"
             alt="PianoForte Schule für Klavier"
           />
@@ -3274,11 +3479,11 @@ section,
     <section class="image-section pf-reveal">
       <div class="container">
 
-        <img
-          class="wide-image"
+        <div class="pf-text-image-wrap"><img
+          class="wide-image pf-text-image"
           src="http://www.pianoforte-valley.de/attachments/Image/264459_245877705427111_2069370_n_2.jpg"
           alt="PianoForte Schule für Klavier"
-        />
+        /></div>
 
       </div>
     </section>

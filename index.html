@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="PianoForte Schule für Klavier in Valley. Klavierunterricht für Kinder, Jugendliche und Erwachsene – klassisch, jazz, pop und rock."
+    content="PianoForte Schule für Klavier in Valley. Klavierunterricht für Kinder, Jugendliche und Erwachsene."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,11 +27,11 @@
       --surface-strong: #fffdf8;
       --text: #302b25;
       --muted: #746b60;
-      --accent: #8b6749;
+      --accent: #9a7654;
       --accent-dark: #65472f;
       --border: rgba(88, 66, 45, 0.18);
-      --shadow: 0 18px 50px rgba(74, 53, 35, 0.09);
-      --radius: 24px;
+      --shadow: 0 18px 50px rgba(74, 53, 35, 0.1);
+      --radius: 25px;
     }
 
     * {
@@ -48,13 +48,18 @@
       background:
         radial-gradient(
           circle at top left,
-          rgba(255, 255, 255, 0.6),
-          transparent 35%
+          rgba(255, 255, 255, 0.65),
+          transparent 36%
         ),
         var(--background);
       color: var(--text);
       font-family: "DM Sans", sans-serif;
       line-height: 1.7;
+    }
+
+    body::selection {
+      background: var(--accent);
+      color: white;
     }
 
     a {
@@ -67,6 +72,12 @@
       max-width: 100%;
     }
 
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
     .container {
       width: min(1180px, calc(100% - 40px));
       margin: 0 auto;
@@ -76,7 +87,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(238, 231, 218, 0.88);
+      background: rgba(238, 231, 218, 0.9);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(18px);
     }
@@ -96,8 +107,8 @@
     }
 
     .brand-mark {
-      width: 44px;
-      height: 44px;
+      width: 45px;
+      height: 45px;
       display: grid;
       place-items: center;
       border: 1px solid var(--border);
@@ -105,7 +116,7 @@
       background: var(--surface);
       color: var(--accent-dark);
       font-family: "Playfair Display", serif;
-      font-size: 23px;
+      font-size: 24px;
     }
 
     .brand-text strong {
@@ -127,11 +138,11 @@
     .nav-links {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
       justify-content: flex-end;
-      gap: 22px;
-      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 21px;
       color: var(--muted);
+      font-size: 13px;
     }
 
     .nav-links a {
@@ -148,15 +159,15 @@
       justify-content: center;
       min-height: 48px;
       padding: 0 22px;
-      border-radius: 999px;
       border: 1px solid transparent;
+      border-radius: 999px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+      cursor: pointer;
       transition:
         transform 0.2s ease,
         background 0.2s ease,
         border-color 0.2s ease;
-      cursor: pointer;
     }
 
     .button:hover {
@@ -183,7 +194,7 @@
     }
 
     .hero {
-      padding: 100px 0 90px;
+      padding: 100px 0 85px;
     }
 
     .hero-grid {
@@ -212,7 +223,7 @@
     }
 
     h1 {
-      max-width: 680px;
+      max-width: 700px;
       font-size: clamp(44px, 6vw, 76px);
     }
 
@@ -260,20 +271,19 @@
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      border-radius: 180px 180px 24px 24px;
+      border-radius: 180px 180px 25px 25px;
       box-shadow: var(--shadow);
-      filter: sepia(8%);
     }
 
     .hero-card {
       position: absolute;
       right: -25px;
       bottom: 28px;
-      width: min(280px, 75%);
+      width: min(285px, 75%);
       padding: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.65);
       border-radius: 20px;
-      background: rgba(255, 253, 248, 0.9);
+      background: rgba(255, 253, 248, 0.92);
       box-shadow: var(--shadow);
       backdrop-filter: blur(15px);
     }
@@ -294,20 +304,20 @@
       padding: 90px 0;
     }
 
+    .soft-section {
+      background: rgba(255, 253, 248, 0.38);
+      border-top: 1px solid rgba(88, 66, 45, 0.08);
+      border-bottom: 1px solid rgba(88, 66, 45, 0.08);
+    }
+
     .section-heading {
-      max-width: 720px;
+      max-width: 740px;
       margin-bottom: 42px;
     }
 
     .section-heading p {
       margin-top: 20px;
       color: var(--muted);
-    }
-
-    .soft-section {
-      background: rgba(255, 253, 248, 0.36);
-      border-top: 1px solid rgba(88, 66, 45, 0.08);
-      border-bottom: 1px solid rgba(88, 66, 45, 0.08);
     }
 
     .about-grid {
@@ -332,39 +342,12 @@
       margin-top: 30px;
       padding: 28px 30px;
       border-left: 3px solid var(--accent);
-      background: rgba(255, 253, 248, 0.62);
       border-radius: 0 18px 18px 0;
+      background: rgba(255, 253, 248, 0.65);
       color: var(--accent-dark);
       font-family: "Playfair Display", serif;
       font-size: 21px;
       line-height: 1.55;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: rgba(255, 253, 248, 0.72);
-      box-shadow: 0 8px 25px rgba(74, 53, 35, 0.035);
-    }
-
-    .card-number {
-      margin-bottom: 18px;
-      color: var(--accent);
-      font-family: "Playfair Display", serif;
-      font-size: 27px;
-    }
-
-    .card p {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 14px;
     }
 
     .education-grid {
@@ -399,9 +382,9 @@
     .lesson-main,
     .lesson-side {
       padding: 36px;
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       background: var(--surface-strong);
-      border: 1px solid var(--border);
     }
 
     .lesson-main p,
@@ -410,25 +393,10 @@
       color: var(--muted);
     }
 
-    .style-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 25px;
-    }
-
-    .style-list span {
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--accent-dark);
-      font-size: 13px;
-    }
-
     .times {
-      margin-top: 25px;
       display: grid;
       gap: 13px;
+      margin-top: 25px;
     }
 
     .time-row {
@@ -443,6 +411,44 @@
     .time-row span:last-child {
       color: var(--muted);
       text-align: right;
+    }
+
+    .image-section {
+      padding: 30px 0 90px;
+    }
+
+    .wide-image {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, 0.72);
+    }
+
+    .card-number {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+    }
+
+    .card p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .pricing-grid {
@@ -512,7 +518,7 @@
     }
 
     .trial-box p {
-      max-width: 680px;
+      max-width: 720px;
       margin-top: 15px;
       color: rgba(255, 250, 242, 0.78);
     }
@@ -641,14 +647,13 @@
       padding: 13px 15px;
       background: var(--surface-strong);
       color: var(--text);
-      font: inherit;
       outline: none;
     }
 
     input:focus,
     textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(139, 103, 73, 0.12);
+      box-shadow: 0 0 0 3px rgba(154, 118, 84, 0.15);
     }
 
     textarea {
@@ -678,8 +683,8 @@
 
     .footer-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
     }
@@ -729,9 +734,9 @@
       }
 
       .nav {
-        padding: 15px 0;
         align-items: flex-start;
         flex-direction: column;
+        padding: 15px 0;
       }
 
       .nav-links {
@@ -773,8 +778,8 @@
       }
 
       .time-row {
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start;
         gap: 2px;
       }
 
@@ -789,8 +794,10 @@
 
   <header class="site-header">
     <div class="container nav">
+
       <a href="#start" class="brand">
         <div class="brand-mark">P</div>
+
         <div class="brand-text">
           <strong>PianoForte</strong>
           <span>Schule für Klavier</span>
@@ -799,12 +806,14 @@
 
       <nav class="nav-links" aria-label="Hauptnavigation">
         <a href="#ueber-uns">Über uns</a>
-        <a href="#unterricht">Unterricht</a>
+        <a href="#unterricht">Dein Unterricht</a>
         <a href="#preise">Preise</a>
         <a href="#probeunterricht">Probeunterricht</a>
+        <a href="#anmeldung">Anmeldung</a>
         <a href="#standort">Standort</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
+
     </div>
   </header>
 
@@ -851,8 +860,10 @@
 
           <div class="hero-card">
             <strong>Musik beginnt mit Verständnis.</strong>
+
             <p>
-              Klassik, Jazz, Pop und Rock – passend zu deinen Interessen.
+              Individueller Klavierunterricht mit Erfahrung und persönlicher
+              Betreuung.
             </p>
           </div>
         </div>
@@ -865,12 +876,22 @@
 
         <div>
           <div class="eyebrow">Über die Klavierschule</div>
-          <h2>Persönlicher Unterricht mit Erfahrung.</h2>
-          <div class="about-label">Ebony Khadija Davis</div>
-          <p>Pianistin und Klavierpädagogin</p>
+
+          <h2>
+            Persönlicher Unterricht mit Erfahrung.
+          </h2>
+
+          <div class="about-label">
+            Ebony Khadija Davis
+          </div>
+
+          <p>
+            Pianistin und Klavierpädagogin
+          </p>
         </div>
 
         <div class="about-content">
+
           <p>
             Ob Schüler oder Eltern, die eine Schule für ihr Kind suchen –
             diese Website soll eine hilfreiche Informationsquelle zum Alltag
@@ -897,6 +918,7 @@
             guten Klavierspiel auch das Verständnis für die musikalische
             Sprache zu vermitteln.“
           </div>
+
         </div>
 
       </div>
@@ -907,22 +929,28 @@
 
         <div class="section-heading">
           <div class="eyebrow">Ausbildung</div>
-          <h2>Musikalische Ausbildung und Weiterbildungen.</h2>
+
+          <h2>
+            Musikalische Ausbildung und Weiterbildungen.
+          </h2>
         </div>
 
         <div class="education-grid">
 
           <div class="education-card">
             <h3>USA</h3>
+
             <ul>
               <li>
                 Howard University Music Department, Washington, D.C.
                 – Klavierklasse Prof. Thomas Flagg
               </li>
+
               <li>
                 Georgetown University Music Department, Washington, D.C.
                 – Klavierklasse Prof. Melanie da Silva
               </li>
+
               <li>
                 Sherwood School of Music, Chicago, Illinois
                 – Klavierklasse Prof. Leo Podolsky
@@ -932,11 +960,13 @@
 
           <div class="education-card">
             <h3>Deutschland</h3>
+
             <ul>
               <li>
                 Musikhochschule Lübeck
                 – Klavierklasse Fr. Prof. Eliza Hansen und Prof. Manfred Foch
               </li>
+
               <li>
                 Städtische Bühne Frankfurt
                 – Gesang bei Prof. Jarius
@@ -945,6 +975,7 @@
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -953,32 +984,34 @@
 
         <div class="section-heading">
           <div class="eyebrow">Unterricht</div>
-          <h2>Klavier spielen lernen – individuell und mit Freude.</h2>
+
+          <h2>Dein Unterricht.</h2>
+
           <p>
-            Unterricht für Kinder ab sechs Jahren, Jugendliche und Erwachsene
-            aller Altersklassen. Anfänger sowie Fortgeschrittene sind herzlich
-            willkommen.
+            Klavier spielen lernen von einer geduldigen und geschulten
+            Lehrerin. Der Unterricht richtet sich an Kinder ab sechs Jahren,
+            Jugendliche und Erwachsene aller Altersklassen – für Anfänger
+            und Fortgeschrittene.
           </p>
         </div>
 
         <div class="lesson-grid">
 
           <div class="lesson-main">
-            <h3>Deine Musik. Dein Unterricht.</h3>
+            <h3>Individuell auf dich abgestimmt.</h3>
 
             <p>
-              Der Unterricht wird auf die persönlichen Interessen und
-              musikalischen Vorlieben der Schüler abgestimmt. Dabei geht es
-              nicht nur um das Spielen von Stücken, sondern auch um das
-              Verständnis der musikalischen Sprache.
+              Der Unterricht wird an die persönlichen Interessen und das
+              individuelle Lerntempo angepasst. Dabei steht nicht nur das
+              Klavierspielen, sondern auch das Verständnis für die musikalische
+              Sprache im Mittelpunkt.
             </p>
 
-            <div class="style-list">
-              <span>Klassik</span>
-              <span>Jazz</span>
-              <span>Pop</span>
-              <span>Rock</span>
-            </div>
+            <p>
+              Zusätzlich werden Gehörbildung, leichte Harmonielehre und bei
+              Bedarf die Vorbereitung auf Aufnahmeprüfungen an Musikhochschulen
+              angeboten.
+            </p>
           </div>
 
           <div class="lesson-side">
@@ -999,11 +1032,39 @@
 
         </div>
 
-        <div class="cards-grid" style="margin-top: 24px;">
+      </div>
+    </section>
+
+    <section class="image-section">
+      <div class="container">
+
+        <img
+          class="wide-image"
+          src="http://www.pianoforte-valley.de/attachments/Image/264459_245877705427111_2069370_n_2.jpg"
+          alt="PianoForte Schule für Klavier"
+        />
+
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Besondere Angebote</div>
+
+          <h2>
+            Mehr als nur Klavierspielen.
+          </h2>
+        </div>
+
+        <div class="cards-grid">
 
           <div class="card">
             <div class="card-number">01</div>
+
             <h3>Gehörbildung</h3>
+
             <p>
               Das musikalische Hören wird gezielt geschult und bildet eine
               wichtige Grundlage für das eigene Musizieren.
@@ -1012,7 +1073,9 @@
 
           <div class="card">
             <div class="card-number">02</div>
+
             <h3>Harmonielehre</h3>
+
             <p>
               Leichte Harmonielehre hilft dabei, musikalische Zusammenhänge
               besser zu verstehen.
@@ -1021,7 +1084,9 @@
 
           <div class="card">
             <div class="card-number">03</div>
+
             <h3>Prüfungsvorbereitung</h3>
+
             <p>
               Vorbereitung auf Aufnahmeprüfungen an Musikhochschulen und
               musikalischen Ausbildungsstätten.
@@ -1029,15 +1094,19 @@
           </div>
 
         </div>
+
       </div>
     </section>
 
-    <section id="preise">
+    <section id="preise" class="soft-section">
       <div class="container">
 
         <div class="section-heading">
           <div class="eyebrow">Preise</div>
-          <h2>Transparente Preise für regelmäßigen Unterricht.</h2>
+
+          <h2>
+            Transparente Preise für regelmäßigen Unterricht.
+          </h2>
         </div>
 
         <div class="pricing-grid">
@@ -1050,7 +1119,9 @@
               <small>/ Monat</small>
             </div>
 
-            <p>Wöchentlicher Einzelunterricht.</p>
+            <p>
+              Wöchentlicher Einzelunterricht.
+            </p>
 
             <ul>
               <li>1.440 € pro Jahr</li>
@@ -1067,7 +1138,9 @@
               <small>/ Monat</small>
             </div>
 
-            <p>Wöchentlicher Einzelunterricht.</p>
+            <p>
+              Wöchentlicher Einzelunterricht.
+            </p>
 
             <ul>
               <li>1.200 € pro Jahr</li>
@@ -1080,6 +1153,7 @@
 
         <div class="card" style="margin-top: 24px;">
           <h3>Weitere Konditionen</h3>
+
           <p>
             Ein zweites Familienmitglied erhält 5 % Ermäßigung.
             Bei Vorauszahlung des gesamten Jahresbetrags werden 5 % Skonto
@@ -1091,28 +1165,31 @@
       </div>
     </section>
 
-    <section id="probeunterricht" class="soft-section">
+    <section id="probeunterricht">
       <div class="container">
 
         <div class="trial-box">
+
           <div>
             <div class="eyebrow" style="color: #d8b995;">
               Probeunterricht
             </div>
 
-            <h2>Kennenlernen ohne Risiko.</h2>
+            <h2>
+              Kennenlernen ohne Risiko.
+            </h2>
 
             <p>
               Eine kostenlose und unverbindliche Probestunde gibt dir die
               Möglichkeit, das Instrument und die musikalischen Möglichkeiten
-              kennenzulernen. Bei Schülern mit Vorkenntnissen wird außerdem
-              das aktuelle Spielniveau eingeschätzt.
+              kennenzulernen.
             </p>
 
             <p>
-              Die Probestunde findet immer nach Vereinbarung am
-              Samstagvormittag statt. Bei Kindern sollte ein Elternteil
-              teilnehmen.
+              Bei Schülern mit Vorkenntnissen wird außerdem das aktuelle
+              Spielniveau eingeschätzt. Die Probestunde findet nach
+              Vereinbarung am Samstagvormittag statt. Bei Kindern sollte
+              ein Elternteil teilnehmen.
             </p>
           </div>
 
@@ -1122,6 +1199,55 @@
           >
             Termin anfragen
           </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="anmeldung" class="soft-section">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Anmeldung</div>
+
+          <h2>
+            In Ruhe anmelden.
+          </h2>
+
+          <p>
+            Das Anmeldeformular kann als PDF heruntergeladen, ausgedruckt
+            und anschließend ausgefüllt werden.
+          </p>
+        </div>
+
+        <div class="trial-box">
+
+          <div>
+            <div class="eyebrow" style="color: #d8b995;">
+              Anmeldeformular
+            </div>
+
+            <h2>
+              Formular herunterladen.
+            </h2>
+
+            <p>
+              Lade das Formular herunter, drucke es aus und bringe es zum
+              vereinbarten Termin mit oder sende es nach vorheriger
+              Absprache zurück.
+            </p>
+          </div>
+
+          <a
+            class="button"
+            href="anmeldeformular.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            PDF öffnen
+          </a>
+
         </div>
 
       </div>
@@ -1132,13 +1258,17 @@
 
         <div class="section-heading">
           <div class="eyebrow">Häufige Fragen</div>
-          <h2>Alles Wichtige auf einen Blick.</h2>
+
+          <h2>
+            Alles Wichtige auf einen Blick.
+          </h2>
         </div>
 
         <div class="faq-grid">
 
           <details>
             <summary>Für wen ist der Unterricht geeignet?</summary>
+
             <p>
               Für Kinder ab sechs Jahren, Jugendliche und Erwachsene aller
               Altersklassen – sowohl Anfänger als auch Fortgeschrittene.
@@ -1147,6 +1277,7 @@
 
           <details>
             <summary>Kann ich vor der Anmeldung eine Probestunde machen?</summary>
+
             <p>
               Ja. Es gibt eine kostenlose und unverbindliche Probestunde.
               Diese findet nach Vereinbarung am Samstagvormittag statt.
@@ -1154,15 +1285,17 @@
           </details>
 
           <details>
-            <summary>Welche Musikrichtungen werden unterrichtet?</summary>
+            <summary>Welche Inhalte werden im Unterricht behandelt?</summary>
+
             <p>
-              Der Unterricht kann klassische Musik, Jazz, Pop oder Rock
-              umfassen und wird an die persönlichen Interessen angepasst.
+              Neben dem Klavierspiel werden musikalisches Verständnis,
+              Gehörbildung und leichte Harmonielehre vermittelt.
             </p>
           </details>
 
           <details>
-            <summary>Kann ich mich auch während des Schuljahres anmelden?</summary>
+            <summary>Kann ich mich während des Schuljahres anmelden?</summary>
+
             <p>
               Ja. Eine Anmeldung ist jederzeit möglich, auch während des
               laufenden Schuljahres.
@@ -1170,6 +1303,7 @@
           </details>
 
         </div>
+
       </div>
     </section>
 
@@ -1178,7 +1312,11 @@
 
         <div class="section-heading">
           <div class="eyebrow">Standort</div>
-          <h2>Du findest uns in Valley.</h2>
+
+          <h2>
+            Du findest uns in Valley.
+          </h2>
+
           <p>
             Die PianoForte Schule für Klavier befindet sich in der
             Graf-Arco-Straße 7 in 83626 Valley.
@@ -1188,9 +1326,12 @@
         <div class="location-grid">
 
           <div class="location-card">
+
             <div class="location-icon">⌖</div>
 
-            <h3>PianoForte Schule für Klavier</h3>
+            <h3>
+              PianoForte Schule für Klavier
+            </h3>
 
             <p>
               Graf-Arco-Straße 7<br />
@@ -1208,6 +1349,7 @@
             </div>
 
             <div class="location-actions">
+
               <a
                 class="button button-primary"
                 href="https://www.google.com/maps/search/?api=1&query=Graf-Arco-Stra%C3%9Fe+7%2C+83626+Valley"
@@ -1223,7 +1365,9 @@
               >
                 E-Mail schreiben
               </a>
+
             </div>
+
           </div>
 
           <iframe
@@ -1235,6 +1379,7 @@
           ></iframe>
 
         </div>
+
       </div>
     </section>
 
@@ -1243,7 +1388,11 @@
 
         <div class="section-heading">
           <div class="eyebrow">Kontakt</div>
-          <h2>Wir freuen uns auf deine Nachricht.</h2>
+
+          <h2>
+            Wir freuen uns auf deine Nachricht.
+          </h2>
+
           <p>
             Du hast Fragen zum Unterricht oder möchtest eine Probestunde
             vereinbaren? Schreib uns gerne.
@@ -1253,7 +1402,10 @@
         <div class="contact-grid">
 
           <div class="contact-info">
-            <h3>Kontaktinformationen</h3>
+
+            <h3>
+              Kontaktinformationen
+            </h3>
 
             <p>
               <strong>PianoForte Schule für Klavier</strong><br />
@@ -1262,10 +1414,14 @@
             </p>
 
             <div class="contact-links">
-              <a href="tel:+491738243390">0173 8243390</a>
+              <a href="tel:+491738243390">
+                0173 8243390
+              </a>
+
               <a href="mailto:mail@pianoforte-valley.de">
                 mail@pianoforte-valley.de
               </a>
+
               <a
                 href="http://www.pianoforte-valley.de/contact-us/"
                 target="_blank"
@@ -1274,19 +1430,26 @@
                 Originale Kontaktseite öffnen
               </a>
             </div>
+
           </div>
 
           <div class="contact-form">
-            <h3>Nachricht senden</h3>
+
+            <h3>
+              Nachricht senden
+            </h3>
 
             <form
               action="https://formspree.io/f/xjyvqwll"
               method="POST"
               id="contactForm"
             >
+
               <div class="form-row">
+
                 <label>
                   Name
+
                   <input
                     type="text"
                     name="name"
@@ -1297,6 +1460,7 @@
 
                 <label>
                   E-Mail
+
                   <input
                     type="email"
                     name="email"
@@ -1304,10 +1468,12 @@
                     required
                   />
                 </label>
+
               </div>
 
               <label>
                 Betreff
+
                 <input
                   type="text"
                   name="subject"
@@ -1318,6 +1484,7 @@
 
               <label>
                 Nachricht
+
                 <textarea
                   name="message"
                   placeholder="Deine Nachricht ..."
@@ -1327,13 +1494,20 @@
 
               <div class="form-status" id="formStatus"></div>
 
-              <button class="button button-primary" type="submit" id="submitButton">
+              <button
+                class="button button-primary"
+                type="submit"
+                id="submitButton"
+              >
                 Nachricht senden
               </button>
+
             </form>
+
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -1341,21 +1515,25 @@
 
   <footer>
     <div class="container footer-inner">
+
       <p>
         © <span id="year"></span> PianoForte Schule für Klavier
       </p>
 
       <div class="footer-links">
         <a href="#start">Startseite</a>
-        <a href="#unterricht">Unterricht</a>
+        <a href="#unterricht">Dein Unterricht</a>
+        <a href="#anmeldung">Anmeldung</a>
         <a href="#standort">Standort</a>
         <a href="#kontakt">Kontakt</a>
       </div>
+
     </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
     const form = document.getElementById("contactForm");
     const statusBox = document.getElementById("formStatus");
@@ -1379,19 +1557,23 @@
           }
         });
 
-        if (response.ok) {
-          statusBox.textContent =
-            "Vielen Dank! Deine Nachricht wurde erfolgreich gesendet.";
-          statusBox.style.display = "block";
-          form.reset();
-        } else {
+        if (!response.ok) {
           throw new Error("Formular konnte nicht gesendet werden.");
         }
+
+        statusBox.textContent =
+          "Vielen Dank! Deine Nachricht wurde erfolgreich gesendet.";
+
+        statusBox.style.display = "block";
+        form.reset();
+
       } catch (error) {
         statusBox.textContent =
           "Leider ist ein Fehler aufgetreten. Bitte schreibe direkt an mail@pianoforte-valley.de.";
+
         statusBox.classList.add("error");
         statusBox.style.display = "block";
+
       } finally {
         submitButton.disabled = false;
         submitButton.textContent = "Nachricht senden";
